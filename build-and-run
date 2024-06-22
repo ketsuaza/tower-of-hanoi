@@ -64,7 +64,7 @@ build() {
 tests() {
   if [[ -f bin/hanoi_solver_test ]]; then
     run.set-next show-output-on
-    run "echo && bin/divider_tests"
+    run "echo && bin/hanoi_solver_test"
   else
     printf "${bldred}Can't find installed executable ${bldylw}bin/hanoi_solver_test.${clr}\n"
     exit 2
