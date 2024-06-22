@@ -72,7 +72,7 @@ tests() {
 }
 
 examples() {
-  [[ ! -f bin/divider ]] && {
+  [[ ! -f bin/hanoi-main ]] && {
     error "You don't have the cmpiled binary yet".
     exit 3
   }
