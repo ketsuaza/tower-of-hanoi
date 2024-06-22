@@ -1,9 +1,10 @@
-cmake_minimum_required(VERSION 3.2)
-project(divider)
+cmake_minimum_required(VERSION 3.5)
+project(hanoi-main)
 
-add_subdirectory(division)
+add_subdirectory(hanoi-solver)
 set(SOURCE_FILES main.cpp)
 
-add_executable(divider ${SOURCE_FILES})
-target_link_libraries(divider division)
-install(TARGETS divider DESTINATION ${DIVISIBLE_INSTALL_BIN_DIR})
+add_executable(hanoi-main ${SOURCE_FILES})
+target_link_libraries(hanoi-main hanoi-solver)
+
+install(TARGETS hanoi-main DESTINATION ${BIN_DIR})

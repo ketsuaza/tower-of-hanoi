@@ -31,7 +31,7 @@ export BuildDir="${ProjectRoot}/build/run"
 export BashLibRoot="${ProjectRoot}/bin/lib-bash"
 export LibBashRepo="https://github.com/kigster/lib-bash"
 
-divider.header() {
+header() {
   h1.purple "Fractional Division With Remainder: A CMake Project Template with Tests"
   local OIFC=${IFC}
   IFS="|" read -r -a gcc_info <<< "$(gcc --version 2>&1 | tr '\n' '|')"
@@ -41,20 +41,18 @@ divider.header() {
   h1 "${bldylw}CMAKE:  ${bldblu}$(cmake --version | tr '\n' ' ')"
 }
 
-divider.setup() {
+setup() {
   hl.subtle "Creating Build Folder..."
   run "mkdir -p build/run"
   run "git submodule init && git submodule update"
-
-  [[ -f .idea/workspace.xml ]] || cp .idea/workspace.xml.example .idea/workspace.xml
 }
 
-divider.clean() {
+clean() {
   hl.subtle "Cleaning output folders..."
-  run 'rm -rf bin/d* include/d* lib/*'
+  run 'rm -rf bin/* include/* lib/*'
 }
 
-divider.build() {
+build() {
   run "cd build/run"
   run "cmake ../.. "
   run.set-next show-output-on
@@ -63,17 +61,17 @@ divider.build() {
   run "cd ${ProjectRoot}"
 }
 
-divider.tests() {
-  if [[ -f bin/divider_tests ]]; then
+tests() {
+  if [[ -f bin/hanoi_solver_test ]]; then
     run.set-next show-output-on
     run "echo && bin/divider_tests"
   else
-    printf "${bldred}Can't find installed executable ${bldylw}bin/divider_tests.${clr}\n"
+    printf "${bldred}Can't find installed executable ${bldylw}bin/hanoi_solver_test.${clr}\n"
     exit 2
   fi
 }
 
-divider.examples() {
+examples() {
   [[ ! -f bin/divider ]] && {
     error "You don't have the cmpiled binary yet".
     exit 3
@@ -82,21 +80,21 @@ divider.examples() {
   run.set-all show-output-on
 
   hr
-  run "bin/divider 11 7"
+  run "bin/hanoi-main 2"
   hr
-  run "bin/divider 1298798375 94759897"
+  run "bin/hanoi-main 3"
   hr
-  run "bin/divider 78 17"
+  run "bin/hanoi-main 4"
   hr
 
 }
 
 main() {
-  divider.header
-  divider.setup
-  divider.build
-  divider.tests
-  divider.examples
+  header
+  setup
+  build
+  tests
+  examples
 }
 
 (( $_s_ )) || main
