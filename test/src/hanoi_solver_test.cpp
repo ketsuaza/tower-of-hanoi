@@ -46,3 +46,9 @@ TEST_F(HanoiSolverTest, case3_N_10) {
 TEST_F(HanoiSolverTest, case4_N_m3) {
   // 未定義……
 }
+
+TEST_F(HanoiSolverTest, invalid_stick_is_distinct_from_valid_sticks) {
+  EXPECT_NE(stick::INVALID, stick::LEFT);
+  EXPECT_NE(stick::INVALID, stick::MID);
+  EXPECT_NE(stick::INVALID, stick::RIGHT);
+}
