@@ -47,6 +47,5 @@ stick solve_helper::where_is_rest_stick(stick from, stick to)
     }
   }
 
-  // エラー用stickを定義する必要がある。
-  return stick::LEFT;
+  return stick::INVALID;
 }

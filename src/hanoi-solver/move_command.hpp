@@ -7,7 +7,8 @@ enum class stick
 {
   LEFT,
   MID,
-  RIGHT
+  RIGHT,
+  INVALID
 };
 
 class move_command
